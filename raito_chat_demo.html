@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raito Chat Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#313338;color:#dbdee1;height:100vh;display:flex;overflow:hidden}
+.servers{width:72px;background:#1e1f22;padding:12px 10px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.server{width:48px;height:48px;border-radius:16px;background:#5865f2;color:white;display:grid;place-items:center;font-weight:bold;cursor:pointer}
+.server.gray{background:#313338;color:#b5bac1}.server:hover{border-radius:12px}
+.channels{width:235px;background:#2b2d31}.head{height:60px;padding:20px;font-weight:700;border-bottom:1px solid #1f2023}
+.section{padding:18px 12px 6px;color:#949ba4;font-size:12px;font-weight:700}
+.channel{margin:3px 8px;padding:9px 12px;border-radius:5px;color:#b5bac1;cursor:pointer}.channel.active,.channel:hover{background:#404249;color:#fff}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}.top{height:60px;border-bottom:1px solid #1f2023;display:flex;align-items:center;padding:0 18px;font-weight:700}.hash{color:#949ba4;font-size:22px;margin-right:9px}
+.chat{flex:1;padding:22px;overflow:auto}.msg{display:flex;gap:12px;margin:16px 0}.avatar{width:40px;height:40px;border-radius:50%;background:#5865f2;display:grid;place-items:center;font-weight:bold;color:white;flex:none}.content b{color:white}.time{font-size:11px;color:#949ba4;margin-left:8px}.content p{margin:4px 0;color:#dbdee1}
+.input{margin:0 18px 18px;background:#383a40;border-radius:8px;padding:13px;color:#949ba4}.input span{color:#dbdee1}
+.members{width:210px;background:#2b2d31;padding:18px 12px}.members h4{color:#949ba4;font-size:12px;margin:0 8px 10px}.member{padding:8px;border-radius:5px;display:flex;align-items:center;gap:9px}.dot{width:9px;height:9px;border-radius:50%;background:#23a559}.owner{font-size:10px;color:#faa61a;margin-left:auto}.profile{margin-top:auto;background:#232428;padding:10px;display:flex;align-items:center;gap:8px}.mini{width:32px;height:32px;border-radius:50%;background:#5865f2;display:grid;place-items:center;color:#fff}
+button{background:#5865f2;border:0;color:#fff;padding:8px 12px;border-radius:5px;cursor:pointer;margin-left:auto}
+@media(max-width:850px){.members{display:none}.channels{width:190px}}@media(max-width:600px){.servers{width:58px}.channels{display:none}}
+</style>
+</head>
+<body>
+<div class="servers">
+  <div class="server">R</div><div class="server gray">+</div><div class="server gray">⚙</div>
+</div>
+<aside class="channels">
+  <div class="head">Raito Chat</div>
+  <div class="section">TEXT CHANNELS</div>
+  <div class="channel active"># general</div>
+  <div class="channel"># gaming</div>
+  <div class="channel"># music</div>
+  <div class="section">VOICE CHANNELS</div>
+  <div class="channel">🔊 General</div>
+  <div class="channel">🔊 Gaming</div>
+  <div class="profile"><div class="mini">P</div><div><b>Punler</b><div style="font-size:11px;color:#949ba4">Online</div></div><button onclick="alert('Demo settings')">⚙</button></div>
+</aside>
+<main class="main">
+  <div class="top"><span class="hash">#</span>general <span style="margin-left:10px;color:#949ba4;font-size:12px">Raito Chat demo</span></div>
+  <div class="chat" id="chat">
+    <div class="msg"><div class="avatar">P</div><div class="content"><b>Punler</b><span class="time">Owner • just now</span><p>Welcome to Raito Chat! 🔥</p></div></div>
+    <div class="msg"><div class="avatar" style="background:#23a559">R</div><div class="content"><b>Raito</b><span class="time">just now</span><p>This is my Discord-style website demo 😎</p></div></div>
+  </div>
+  <div class="input" onclick="sendDemo()">Message #general — <span>click here to send a demo message</span></div>
+</main>
+<aside class="members">
+  <h4>ONLINE — 2</h4>
+  <div class="member"><div class="dot"></div><b>Punler</b><span class="owner">OWNER</span></div>
+  <div class="member"><div class="dot"></div>Raito</div>
+</aside>
+<script>
+function sendDemo(){
+ const chat=document.getElementById('chat');
+ const d=document.createElement('div'); d.className='msg';
+ d.innerHTML='<div class="avatar">P</div><div class="content"><b>Punler</b><span class="time">just now</span><p>Hello from the demo! 👋</p></div>';
+ chat.appendChild(d); chat.scrollTop=chat.scrollHeight;
+}
+</script>
+</body>
+</html>
